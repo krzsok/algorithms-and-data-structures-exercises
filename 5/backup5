@@ -1,0 +1,291 @@
+/* 
+ * File:   main.cpp
+ * Author: sokol_1089292
+ *
+ * Created on 28 marca 2017, 19:10
+ */
+
+#include <cstdlib>
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <iterator>
+#include <queue>
+#include <algorithm>
+
+
+
+
+
+using namespace std;
+
+int n,m,u,v1,v2,s,e;
+int tme;
+
+int col[50]; // 0 - bialy, 1 - szary, 2 - czarny
+int dst[50];
+int prn[50];
+int edge[50]; //0 - tree(unvisited), 1-visited(forward), 2-explored(back)
+int d[50] = {};
+int f[50] = {};
+vector<int> adj[50];
+queue <int> Q;
+//vector<int>::iterator v;
+//int v;
+/*function VisitNode(u):
+       oznacz u jako odwiedzony
+       dla każdego wierzchołka v na liście sąsiedztwa u:
+           jeżeli v nieodwiedzony:
+               VisitNode(v)
+   function DepthFirstSearch(Graf G):
+       dla każdego wierzchołka u z grafu G:
+           oznacz u jako nieodwiedzony
+       dla każdego wierzchołka u z grafu G:
+           jeżeli u nieodwiedzony:
+               VisitNode(u) */
+
+
+int VisitNode(int u)
+{
+    tme = tme + 1;
+    d[u] = tme;
+    col[u] = 1;
+    
+  
+  //for(v = adj[u].begin; v != adj[u].end(); ++v )
+  // for_each(adj[u].begin(),adj[u].end(),vn)
+    //while(v != adj[u].end)
+    //for ( auto &i : v )  
+   // for(v = adj[u].front(); v != adj[u].back(); ++v )
+//  for(v = adj[u][0]; v < adj[u].size(); v++)
+//  {
+//      cout << "tsoooo";
+//    if(col[v] == 0)
+//    {
+//        cout << "AAAAAAAAAAAAAA";
+//         prn[v] = u; 
+//         int g = v;
+//         VisitNode(g);
+//    }
+//               
+//                
+//        }
+//    
+//    if(col[v] == 0)
+//    {
+//        cout << "eee makarena";}
+//    col[u] = 2;
+//    tme = tme + 1;
+//    f[u] = tme;
+//    
+//}
+    
+    
+    
+    
+    
+     for(vector<int>::iterator v = adj[u].begin(); v != adj[u].end(); v++)
+  {
+      cout << "tsoooo";
+    if(col[*v] == 0)
+    {
+        //cout << "parant" << *v << "=" << u << endl;
+         prn[*v] = u; 
+          cout << "parant" << *v << "=" << u << endl;
+         int g = *v;
+         VisitNode(g);
+    }
+               
+                
+        }
+    
+//    if(col[*v] == 0)
+//    {
+//        cout << "eee makarena";}
+    col[u] = 2;
+    tme = tme + 1;
+    f[u] = tme;
+    
+    
+    
+    
+    
+    
+    
+}
+int DFS()
+{
+    for(int i=0; i<n; i++)
+    {
+        col[i]=0;
+        prn[i]=33;
+        
+    }
+  
+    tme = 0;
+  
+    for(int i=0; i<n; i++)
+    {
+       
+       if(col[i]==0)
+        {
+           VisitNode(i); 
+        }
+          
+    }
+    
+    
+}
+
+/*
+
+int BFS(int s)
+{
+    
+    for(int i=0; i<n; i++)
+    {
+        col[i]=0;
+        dst[i]=99;
+        prn[i]=33;
+        
+    }
+    
+    col[s] = 1;
+    dst[s] = 99;
+    prn[s] = 33;
+    
+    Q.push(s);
+    while(Q.empty() != 1)
+    {
+        //pobrac liste sasiedztwa dla u
+        u = Q.front();
+        Q.pop();
+        for(v = adj[u].begin(); v != adj[u].end(); ++v )
+        {
+            if(col[*v] == 0)
+            {
+                cout << *v <<endl;
+                col[*v] = 1;
+                dst[*v] = dst[u] + 1;
+                prn[*v] = u; 
+               Q.push(*v);
+                
+            }
+        }
+        
+        col[u] = 2;
+    }
+    
+    
+    
+   */ 
+    
+    
+    
+    
+    /*
+     
+     dla każdego wierzchołka u z G:
+        kolor[u] = biały
+        odleglosc[u] = inf
+        rodzic[u] = NIL
+    kolor[s] = SZARY
+    odleglosc[s] = 0
+    rodzic[s] = NIL
+    Q.push(s)
+    dopóki kolejka Q nie jest pusta:
+        u = Q.pop()
+        dla każdego v z listy sąsiedztwa u:
+            jeżeli v jest biały:
+                kolor[v] = SZARY
+                odleglosc[v] = odleglosc[u] + 1
+                rodzic[v] = u
+                Q.push(v)
+33 3        kolor[u] = CZARNY
+
+     
+     */
+//}
+
+/*
+ * 
+ */
+int main(int argc, char** argv) {
+
+ 
+  cout << "podaj liczbe wierzcholkow i krawedzi : " << endl;
+  cin >> n >> m;         // liczba wierzcholkow i krawedzi
+  int T[n][n];
+  
+  
+  
+  
+
+  for(int i = 0; i < n; i++)
+    for(int j = 0; j < n; j++) T[i][j] = 0;
+
+  // ^zerowanie
+
+  cout << "podaj wierzcholek poczatkowy i koncowy krawedzi(wierzcholki liczone od 0)" << endl;
+  for(int i = 0; i < m; i++)
+  {
+    cin >> v1 >> v2;    
+    T[v1][v2] = 1;
+    //T[v2][v1] = 1;// krawedz v1->v2, v2->v1 obecna
+    adj[v1].push_back(v2);
+    //adj[v2].push_back(v1);
+  }
+
+  
+  // lista
+  
+  cout << "lista sasiedztwa : " << endl;
+  for(int r=0; r<n; r++)
+  {
+   cout << r << ": ";
+   copy(adj[r].begin(),adj[r].end(),ostream_iterator<int>(std::cout<< " " ));
+   cout << endl;
+  }
+
+  cout << endl;
+  
+  //cout << "podaj wierzchołek początkowy i końcowy przeszukiwania:" << endl;
+  
+  //cin >> s >> e;
+  
+  //BFS(s);
+  
+  DFS();
+  
+  int z;
+  int counter = 0;
+  z = e;
+ 
+   cout << "dlugoscalt:" << dst[z] - dst[s] << endl;
+  
+  cout << "droga: " << endl;
+  cout << z;
+  cout << endl;
+  do
+  {
+
+      
+      
+      cout << prn[z] << endl;
+      z = prn[z];
+      counter++;
+              
+      
+  } while(prn[z] != 33); 
+  
+  cout << "dlugosc : " << counter;
+  
+ 
+  
+  
+  
+  
+
+  return 0;
+}
+
