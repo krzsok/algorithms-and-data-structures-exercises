@@ -1,0 +1,18 @@
+insert main 3 trzy
+insert main 4 cztery
+insert left 5 piec
+insert left 6 szesc
+insert right 7 siedem
+insert right 8 osiem
+display
+split right 7
+join main right
+split main 7
+split main 3
+join left right
+split main 4
+find left 30
+find left 6
+delete main 3
+find main 3
+exit

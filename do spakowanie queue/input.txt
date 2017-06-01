@@ -1,0 +1,16 @@
+isempty
+frontelem
+enqueue 2
+enqueue 5
+makenull
+isempty
+enqueue 5
+enqueue 8
+frontelem
+isempty
+dequeue
+dequeue
+isempty
+
+exit
+

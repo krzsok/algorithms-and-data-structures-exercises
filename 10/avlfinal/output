@@ -1,0 +1,30 @@
+AVLTree (keys) preorder: 
+3=trzy
+4=cztery
+
+AVLTree (keys) preorder: 
+AVLTree (keys) preorder: 
+8=osiem
+AVLTree (keys) preorder: 
+4=cztery
+3=trzy
+7=siedem
+8=osiem
+AVLTree (keys) preorder: 
+3=trzy
+4=cztery
+AVLTree (keys) preorder: 
+AVLTree (keys) preorder: 
+AVLTree (keys) preorder: 
+4=cztery
+AVLTree (keys) preorder: 
+6=szesc
+5=piec
+7=siedem
+8=osiem
+AVLTree (keys) preorder: 
+3=trzy
+AVLTree (keys) preorder: 
+found: ""
+found: "szesc"
+found: ""

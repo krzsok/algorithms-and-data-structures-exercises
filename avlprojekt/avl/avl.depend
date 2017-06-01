@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1453920694 source:d:\asd\10\avl.cpp
+	<string>
+	<iostream>
+	<cstdlib>
+	<regex>
+
